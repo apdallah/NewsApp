@@ -22,6 +22,7 @@ fun bindImageUrl(imageView: ImageView, url: String?) {
             .into(imageView)
     }
 }
+
 @BindingAdapter("bigUrl")
 fun bindBigImageUrl(imageView: ImageView, bigUrl: String?) {
     bigUrl?.let {
@@ -39,9 +40,11 @@ fun bindBigImageUrl(imageView: ImageView, bigUrl: String?) {
 fun formatData(textView: TextView, date: String?) {
     date?.let {
         try {
-            val formate = SimpleDateFormat("HH:mm yyyy-MM-dd", Locale.US)
-            val parsed_date = formate.parse(it)
-            textView.setText(parsed_date?.toString() ?: "")
+            val uiFormat = SimpleDateFormat("yyyy-MM-dd HH:mm")
+            val calendar = Calendar.getInstance()
+            val formate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.US)
+            calendar.time = formate.parse(it)
+            textView.setText(uiFormat.format(calendar.time))
         } catch (e: Exception) {
             textView.setText(it.split('T')[0])
 
