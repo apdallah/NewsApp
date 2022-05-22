@@ -6,15 +6,16 @@ import com.todayapps.netgrutask.data.models.NewsModel
 import com.apdallahy.newsapp.data.models.Response
 import com.apdallahy.newsapp.data.models.StockModel
 import com.apdallahy.newsapp.data.repos.NewsRepositoryImpl
+import com.apdallahy.newsapp.data.repos.StocksRepositoryImpl
 import com.apdallahy.newsapp.data.usecases.BaseUseCase
 import kotlinx.coroutines.CoroutineScope
 
 class GetStocksFromAsset(
-    private val repositoryImpl: NewsRepositoryImpl,
+    private val repo: StocksRepositoryImpl,
     ioScope: CoroutineScope
 ) : BaseUseCase<String?, HashMap<String?, ArrayList<Double?>?>?>(ioScope) {
     override suspend fun callApi(params: String?): Response<HashMap<String?, ArrayList<Double?>?>?> {
-        return repositoryImpl.getStocksNews()
+        return repo.getStocksNews()
 
     }
 

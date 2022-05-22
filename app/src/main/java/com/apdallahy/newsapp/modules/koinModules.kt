@@ -3,6 +3,7 @@ package com.apdallahy.newsapp.modules
 import com.apdallahy.newsapp.UI.NewsViewModel
 import com.apdallahy.newsapp.data.remote.NewsService
 import com.apdallahy.newsapp.data.repos.NewsRepositoryImpl
+import com.apdallahy.newsapp.data.repos.StocksRepositoryImpl
 import com.apdallahy.newsapp.data.usecases.GetAllNewsUseCase
 import com.apdallahy.newsapp.data.usecases.GetStocksFromAsset
 import kotlinx.coroutines.CoroutineScope
@@ -20,7 +21,8 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 
 val koinModules =
     module {
-        single { NewsRepositoryImpl(get(),get()) }
+        single { NewsRepositoryImpl(get()) }
+        single { StocksRepositoryImpl(get()) }
         single { CoroutineScope(Dispatchers.IO + Job()) }
         single { GetAllNewsUseCase(get(), get()) }
         single { GetStocksFromAsset(get(), get()) }

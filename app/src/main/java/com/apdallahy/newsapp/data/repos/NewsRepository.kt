@@ -6,5 +6,4 @@ import com.apdallahy.newsapp.data.models.Response
 
 interface NewsRepository {
    suspend fun getAll(): Response<NewsResponse?>
-   suspend fun getStocksNews(): Response<HashMap<String?,ArrayList<Double?>?>?>
  }

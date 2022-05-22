@@ -15,8 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class NewsRepositoryImpl(
-    private val application: Application,
-    private val newsService: NewsService
+     private val newsService: NewsService
 ) : NewsRepository {
     override suspend fun getAll(): Response<NewsResponse?> {
         return withContext(Dispatchers.IO) {
@@ -25,27 +24,7 @@ class NewsRepositoryImpl(
 
     }
 
-    override suspend fun getStocksNews(): Response<HashMap<String?, ArrayList<Double?>?>?> {
 
-        val jsonString =
-            FileHelper.getJsonDataFromAsset(application.applicationContext, "stocks.json")
-        val gson = Gson()
-        val listStockType = object : TypeToken<List<StockModel>>() {}.type
-
-        val data: List<StockModel>? = gson.fromJson(jsonString, listStockType)
-        val map = HashMap<String?, ArrayList<Double?>?>()
-        data?.forEach {
-            if (map.containsKey(it.stock)) {
-                val currentMapArr = map[it.stock]
-                currentMapArr?.add(it.price)
-                map[it.stock] = currentMapArr
-            } else {
-                map[it.stock] = arrayListOf(it.price)
-            }
-        }
-        return Response.Success(map)
-
-    }
 
 
 }
