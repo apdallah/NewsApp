@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="newsItem"
+            type="com.todayapps.netgrutask.data.models.NewsModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="8dp"
+        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/newsImage"
+                url="@{newsItem.urlToImage}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/newsTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="start"
+                android:text="@{newsItem.title}"
+                android:textAlignment="textStart"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/newsImage"
+                app:layout_constraintTop_toTopOf="@id/newsImage"
+                tools:text="God needs to come and explain it': How the football world reacted to Real Madrid's extraordinary Champions League semifinal victory" />
+
+            <TextView
+                android:id="@+id/newsDate"
+                date="@{newsItem.publishedAt}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="start"
+                android:textAlignment="textStart"
+                android:textAppearance="@android:style/TextAppearance.Small"
+                app:layout_constraintEnd_toEndOf="@id/newsTitle"
+                app:layout_constraintStart_toStartOf="@id/newsTitle"
+                app:layout_constraintTop_toBottomOf="@id/newsTitle"
+                tools:text="10/5/2022" />
+
+            <TextView
+                android:id="@+id/newsDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="start"
+                android:text="@{newsItem.description}"
+
+                android:textAlignment="textStart"
+                android:textAppearance="@android:style/TextAppearance.Small"
+                app:layout_constraintEnd_toEndOf="@id/newsTitle"
+                app:layout_constraintStart_toStartOf="@id/newsDate"
+                app:layout_constraintTop_toBottomOf="@id/newsDate"
+                tools:text="We have a score to settle, Liverpool star Mo Salah tweeted after Real Madrid staged an extraordinary late comeback against Manchester City to set up a clash with the Reds in the Champions League final on May 28." />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

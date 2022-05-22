@@ -9,14 +9,12 @@
         android:foregroundGravity="center"
         android:background="@android:color/transparent">
 
-        <com.github.ybq.android.spinkit.SpinKitView
+        <ProgressBar
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/spin_kit"
-            style="@style/SpinKitView.DoubleBounce"
-            android:layout_width="wrap_content"
+             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:SpinKit_Color="@color/colorAccent" />
+            android:layout_gravity="center" />
 
     </FrameLayout>
 </layout>

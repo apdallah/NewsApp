@@ -22,8 +22,8 @@ class NewsViewModel(
     BaseViewModel(application) {
     private val stocksData = MutableLiveData<HashMap<String?, ArrayList<Double?>?>>()
     val randomStocksData = MutableLiveData<ArrayList<StockModel>>()
-    val newsData = MutableLiveData<ArrayList<NewsModel>>()
-    val topNewsData = MutableLiveData<ArrayList<NewsModel>>()
+    val newsData = MutableLiveData<MutableList<NewsModel>>()
+    val topNewsData = MutableLiveData<MutableList<NewsModel>>()
 
     init {
         loadStocksFromAsset()
@@ -36,16 +36,32 @@ class NewsViewModel(
             when (apiCallResult) {
                 is Response.Error -> showError(apiCallResult.error?.errorMessage)
                 is Response.Success -> {
-                    topNewsData.postValue(apiCallResult.data?.subList(0, 6) as ArrayList<NewsModel>)
-                    newsData.postValue(
-                        apiCallResult.data.subList(
-                            6,
-                            apiCallResult.data.size
-                        ) as ArrayList<NewsModel>
-                    )
+                    submitTopNews(apiCallResult.data?.articles)
+                    submitNews(apiCallResult.data?.articles)
+
                 }
             }
         }
+    }
+
+    private fun submitTopNews(allNews: ArrayList<NewsModel>?) {
+        allNews?.let {
+            val top6=it.subList(0,6)
+            if(top6.isNotEmpty()){
+                topNewsData.postValue(top6)
+            }
+        }
+
+    }
+    private fun submitNews(allNews: ArrayList<NewsModel>?) {
+        allNews?.let {
+            val restNews=it.subList(6,it.size-1)
+            if(restNews.isNotEmpty()){
+                newsData.postValue(restNews)
+            }
+        }
+
+
     }
 
     fun loadStocksFromAsset() {
@@ -77,8 +93,8 @@ class NewsViewModel(
         val data = stocksData.value
         val randomStocks = arrayListOf<StockModel>()
         data?.keys?.forEach {
-            val randomId = Random(data[it]?.size ?: 0)
-            randomStocks.add(StockModel(it, data[it]?.get(randomId.nextInt())))
+            val randomId = Random.nextInt(data[it]?.size ?: 0)
+            randomStocks.add(StockModel(it, data[it]?.get(randomId)))
         }
         randomStocksData.postValue(randomStocks)
     }
