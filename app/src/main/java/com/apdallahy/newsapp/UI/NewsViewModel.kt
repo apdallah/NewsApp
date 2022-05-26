@@ -25,9 +25,9 @@ class NewsViewModel(
     val newsData = MutableLiveData<MutableList<NewsModel>>()
     val topNewsData = MutableLiveData<MutableList<NewsModel>>()
 
-//    init {
-//        loadStocksFromAsset()
-//    }
+    init {
+        loadStocksFromAsset()
+    }
 
     fun loadNews() {
         showLoading()
