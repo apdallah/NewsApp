@@ -12,7 +12,7 @@ Screen 1            |  Screen 2
    + Data binding for binding data to view
    + kotlin coroutine for multi threading
    + Retrofit for networking
-   + Koin for Dependancy injection 
+   + Koin for Dependancy injection (you can find Hilt on branch "usingHiltForDi")
    + Android Archeticture components (Viewmodel,Livedata and Lifecycle)
    + kotlin extentio functions
    
