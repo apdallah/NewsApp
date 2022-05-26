@@ -9,10 +9,11 @@ import com.apdallahy.newsapp.data.repos.NewsRepositoryImpl
 import com.apdallahy.newsapp.data.repos.StocksRepositoryImpl
 import com.apdallahy.newsapp.data.usecases.BaseUseCase
 import kotlinx.coroutines.CoroutineScope
+import javax.inject.Inject
 
-class GetStocksFromAsset(
+class GetStocksFromAsset @Inject constructor(
     private val repo: StocksRepositoryImpl,
-    ioScope: CoroutineScope
+     private val ioScope: CoroutineScope
 ) : BaseUseCase<String?, HashMap<String?, ArrayList<Double?>?>?>(ioScope) {
     override suspend fun callApi(params: String?): Response<HashMap<String?, ArrayList<Double?>?>?> {
         return repo.getStocksNews()

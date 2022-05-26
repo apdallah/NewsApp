@@ -13,9 +13,12 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class NewsRepositoryImpl(
-     private val newsService: NewsService
+@Singleton
+class NewsRepositoryImpl @Inject constructor(
+       val newsService: NewsService
 ) : NewsRepository {
     override suspend fun getAll(): Response<NewsResponse?> {
         return withContext(Dispatchers.IO) {
@@ -23,8 +26,6 @@ class NewsRepositoryImpl(
         }
 
     }
-
-
 
 
 }

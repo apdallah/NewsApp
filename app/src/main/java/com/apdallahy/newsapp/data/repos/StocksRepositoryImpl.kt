@@ -13,8 +13,9 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class StocksRepositoryImpl(
+class StocksRepositoryImpl @Inject constructor(
     private val application: Application
 ) : StockRepository {
 

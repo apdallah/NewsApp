@@ -2,6 +2,7 @@ package com.apdallahy.newsapp.UI
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,10 +15,12 @@ import com.apdallahy.newsapp.databinding.ActivityMainBinding
 import com.bedaya.mortgage.base_components.Dialogs.IDialogLoading
 import com.google.android.material.snackbar.Snackbar
 import com.todayapps.netgrutask.extentions.observe
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    val viewModel: NewsViewModel by viewModel()
+    val  viewModel: NewsViewModel by viewModels()
+
     protected var dialogLoading: IDialogLoading? = null
     lateinit var dataBinding: ActivityMainBinding
     lateinit var topNewsAdapter: NewsAdapter

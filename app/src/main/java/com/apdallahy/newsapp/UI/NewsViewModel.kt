@@ -9,15 +9,17 @@ import com.apdallahy.newsapp.data.usecases.GetAllNewsUseCase
 import com.apdallahy.newsapp.data.usecases.GetStocksFromAsset
 import com.todayapps.netgrutask.data.common.BaseViewModel
 import com.todayapps.netgrutask.data.models.NewsModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 import kotlin.random.Random
 
-class NewsViewModel(
-    private val getAllNewsUseCase: GetAllNewsUseCase,
-    private val getStocksFromAsset: GetStocksFromAsset,
-
-    application: Application
+@HiltViewModel
+class NewsViewModel @Inject constructor(
+        val getAllNewsUseCase: GetAllNewsUseCase,
+        val getStocksFromAsset: GetStocksFromAsset,
+       application: Application
 ) :
     BaseViewModel(application) {
     val stocksData = MutableLiveData<HashMap<String?, ArrayList<Double?>?>>()

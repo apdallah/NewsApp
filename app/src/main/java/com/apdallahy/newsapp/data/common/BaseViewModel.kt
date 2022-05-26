@@ -4,9 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.todayapps.netgrutask.extentions.emitValToStateFlow
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 
-open class BaseViewModel(application: Application) : AndroidViewModel(application) {
+ open class BaseViewModel( application: Application) : AndroidViewModel(application) {
     val error = MutableLiveData<String>()
     val isLoading = MutableLiveData<Boolean>()
     fun showLoading() {
