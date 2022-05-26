@@ -20,7 +20,7 @@ class NewsViewModel(
     application: Application
 ) :
     BaseViewModel(application) {
-    private val stocksData = MutableLiveData<HashMap<String?, ArrayList<Double?>?>>()
+    val stocksData = MutableLiveData<HashMap<String?, ArrayList<Double?>?>>()
     val randomStocksData = MutableLiveData<ArrayList<StockModel>>()
     val newsData = MutableLiveData<MutableList<NewsModel>>()
     val topNewsData = MutableLiveData<MutableList<NewsModel>>()
@@ -46,17 +46,18 @@ class NewsViewModel(
 
     fun submitTopNews(allNews: ArrayList<NewsModel>?) {
         allNews?.let {
-            val top6=it.subList(0,6)
-            if(top6.isNotEmpty()){
+            val top6 = it.subList(0, 6)
+            if (top6.isNotEmpty()) {
                 topNewsData.postValue(top6)
             }
         }
 
     }
-      fun submitNews(allNews: ArrayList<NewsModel>?) {
+
+    fun submitNews(allNews: ArrayList<NewsModel>?) {
         allNews?.let {
-            val restNews=it.subList(6,it.size)
-            if(restNews.isNotEmpty()){
+            val restNews = it.subList(6, it.size)
+            if (restNews.isNotEmpty()) {
                 newsData.postValue(restNews)
             }
         }
