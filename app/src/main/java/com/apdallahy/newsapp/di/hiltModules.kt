@@ -16,7 +16,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object NetworkModule {
+object hiltModules {
 
     @Provides
     fun provideCoroutineScope():CoroutineScope{
