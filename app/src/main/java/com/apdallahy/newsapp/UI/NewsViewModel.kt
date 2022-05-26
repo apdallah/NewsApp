@@ -25,9 +25,9 @@ class NewsViewModel(
     val newsData = MutableLiveData<MutableList<NewsModel>>()
     val topNewsData = MutableLiveData<MutableList<NewsModel>>()
 
-    init {
-        loadStocksFromAsset()
-    }
+//    init {
+//        loadStocksFromAsset()
+//    }
 
     fun loadNews() {
         showLoading()
@@ -44,7 +44,7 @@ class NewsViewModel(
         }
     }
 
-    private fun submitTopNews(allNews: ArrayList<NewsModel>?) {
+    fun submitTopNews(allNews: ArrayList<NewsModel>?) {
         allNews?.let {
             val top6=it.subList(0,6)
             if(top6.isNotEmpty()){
@@ -53,9 +53,9 @@ class NewsViewModel(
         }
 
     }
-    private fun submitNews(allNews: ArrayList<NewsModel>?) {
+      fun submitNews(allNews: ArrayList<NewsModel>?) {
         allNews?.let {
-            val restNews=it.subList(6,it.size-1)
+            val restNews=it.subList(6,it.size)
             if(restNews.isNotEmpty()){
                 newsData.postValue(restNews)
             }
