@@ -15,5 +15,7 @@ Screen 1            |  Screen 2
    + Koin for Dependancy injection (you can find Hilt on branch "usingHiltForDi")
    + Android Archeticture components (Viewmodel,Livedata and Lifecycle)
    + kotlin extentio functions
+   + Mockito as mocking framework for testing
+   + Junit4 for unit testing 
    
    
