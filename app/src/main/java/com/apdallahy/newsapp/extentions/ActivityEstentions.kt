@@ -10,17 +10,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 
-fun AppCompatActivity.showLoading() {
-
-}
-
-fun AppCompatActivity.hideLoading() {
-
-}
-
-fun AppCompatActivity.showError(errorMessage: String) {
-
-}
 
 
 fun <T : Any, L : LiveData<T>> AppCompatActivity.observe(liveData: L, body: (T?) -> Unit) =

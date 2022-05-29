@@ -1,4 +1,4 @@
-package com.apdallahy.newsapp.data.common
+package com.apdallahy.newsapp.common
 
 import android.widget.ImageView
 import android.widget.TextView

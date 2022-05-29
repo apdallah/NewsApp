@@ -1,4 +1,4 @@
-package com.apdallahy.newsapp.data.common
+package com.apdallahy.newsapp.common
 
 import android.content.Context
 import android.view.Gravity

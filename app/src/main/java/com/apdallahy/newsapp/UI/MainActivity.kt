@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.apdallahy.newsapp.R
 import com.apdallahy.newsapp.UI.adapters.news.NewsAdapter
 import com.apdallahy.newsapp.UI.adapters.stocks.StocksAdapter
-import com.apdallahy.newsapp.data.common.DefaultDialogLoading
+import com.apdallahy.newsapp.common.DefaultDialogLoading
 import com.apdallahy.newsapp.databinding.ActivityMainBinding
 import com.bedaya.mortgage.base_components.Dialogs.IDialogLoading
 import com.google.android.material.snackbar.Snackbar
